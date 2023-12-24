@@ -1,0 +1,114 @@
+C# resend .net api 
+
+
+for SQL server 
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Design 
+dotnet add package Microsoft.EntityFrameworkCore.Tools 
+
+Migartion for SQL Server 
+dotnet ef migrations add initial
+dotnet ef database update  
+
+to remove migrations use 
+dotnet ef migrations remove
+
+Create project
+dotnet new webapi -minimal --name StudentPlatform.API
+dotnet tool install --global dotnet-ef
+
+Run and build project
+dotnet run
+dotnet build
+dotnet build GroupProject.API..csproj 
+
+extensions for vs code
+nuget package manager
+C#
+Sql server
+live share
+
+
+
+Course - Room
+Student - Customer
+Hotel - Techer
+
+
+Database setup example 
+
+using Microsoft.EntityFrameworkCore;
+using HotelProjectAPI.Models;
+
+Context.cs
+
+namespace HotelProjectAPI.Data 
+{
+    public class Context : DbContext 
+    {
+
+        public DbSet<Customer> Students {get; set;}
+        public DbSet<Hotel> Teachers { get; set; }
+        public DbSet<Room> Courses { get; set; }
+
+  public Context(DbContextOptions<Context> options) : base(options) {
+
+//when create this import this to connect databse 
+// dotnet ef migrations add initial
+//dotnet ef database update  
+          
+        }  
+    
+    }
+     }
+
+appSettings.json
+
+  "ConnectionStrings": {
+    "HotelProjectAPIConnection": "Server=(localdb)\\mssqllocaldb;Database=HotelProjectAPI"
+  },
+
+Program.cs DB configuration connection
+
+builder.Services.AddDbContext<Context>(
+    options => 
+    options.UseSqlServer(builder.Configuration.GetConnectionString("HotelProjectAPIConnection"))
+);
+
+if that dosent work do those steps instead in program.cs and appSettings.json
+
+builder.Services.AddDbContext<Context>(
+    options => 
+    options.UseSqlServer(("Server=localhost;Database=HotelProjectAPI;Trusted_connection=True;Trust Server Certificate=Yes"))
+); 
+
+ "ConnectionStrings": {
+    "HotelProjectAPIConnection": "Server=localhost;Database=HotelProjectAPI;Trust Server Certificate=Yes"
+  },
+
+tabort den för tillfället 
+
+ <InvariantGlobalization>true</InvariantGlobalization>
+
+
+Context.cs
+
+   protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+             optionsBuilder.UseSqlServer("Server=localhost;Database=GroupProject;Trusted_connection=True;Trust Server Certificate=Yes");
+        }
+
+        DbContextOptionsBuilder optionsBuilder = new DbContextOptionsBuilder();
+
+          public Context() 
+          {
+
+
+           if (!optionsBuilder.IsConfigured)
+           {
+
+            optionsBuilder.UseSqlServer("Server=localhost;Database=GroupProject;Trusted_connection=True;Trust Server Certificate=Yes");
+          
+        }
+
+              
