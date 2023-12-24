@@ -33,6 +33,7 @@ Projektet implementerar en strukturerad och standardiserad RESTful API-arkitektu
 
 ## SQL Server Setup
 För att använda SQL Server som databas behöver följande paket och kommandon installeras:
+
 ```bash
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 dotnet add package Microsoft.EntityFrameworkCore.Design 
@@ -41,9 +42,7 @@ dotnet add package Microsoft.EntityFrameworkCore.Tools
 ---
 
 ## För att skapa och applicera migreringar mot SQL Server används följande kommandon
-
 dotnet ef migrations add initial
-
 dotnet ef database update
 
 
