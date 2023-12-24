@@ -33,40 +33,37 @@ Projektet implementerar en strukturerad och standardiserad RESTful API-arkitektu
 
 ## SQL Server Setup
 För att använda SQL Server som databas behöver följande paket och kommandon installeras:
-
-```bash
-dotnet add package Microsoft.EntityFrameworkCore.SqlServer
-dotnet add package Microsoft.EntityFrameworkCore.Design 
-dotnet add package Microsoft.EntityFrameworkCore.Tools
+- dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+- dotnet add package Microsoft.EntityFrameworkCore.Design 
+- dotnet add package Microsoft.EntityFrameworkCore.Tools
 
 ---
 
 ## För att skapa och applicera migreringar mot SQL Server används följande kommandon
-dotnet ef migrations add initial
+- dotnet ef migrations add initial
 dotnet ef database update
-
 
 ---
 
 ## För att ta bort migreringar används kommandot
-dotnet ef migrations remove
+- dotnet ef migrations remove
 
 ---
 
 ## Projektskapat och Verktygsinstallation För att skapa ett projekt och installera verktygen, använd följande kommandon
-dotnet new webapi -minimal --name 
-dotnet tool install --global dotnet-ef
+- dotnet new webapi -minimal --name 
+- dotnet tool install --global dotnet-ef
 
 ---
 
 ## Kör och Bygg Projekt För att köra projektet
-dotnet run
-dotnet build
+- dotnet run
+- dotnet build
 
 ---
 
 ## Extensions för VS Code För att underlätta utvecklingen i Visual Studio Code rekommenderas att installera följande extensions:
-NuGet Package Manager
-C#
-SQL Server
-Live Share
+- NuGet Package Manager
+- C#
+- SQL Server
+- Live Share
