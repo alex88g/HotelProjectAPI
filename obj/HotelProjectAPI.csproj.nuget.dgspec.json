@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alexa\\C#\\GroupProject\\HotelProjectAPI\\HotelProjectAPI.csproj": {}
+    "C:\\Users\\alexa\\VisualStudioCodeProject\\HotelProjectAPI\\HotelProjectAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alexa\\C#\\GroupProject\\HotelProjectAPI\\HotelProjectAPI.csproj": {
+    "C:\\Users\\alexa\\VisualStudioCodeProject\\HotelProjectAPI\\HotelProjectAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alexa\\C#\\GroupProject\\HotelProjectAPI\\HotelProjectAPI.csproj",
+        "projectUniqueName": "C:\\Users\\alexa\\VisualStudioCodeProject\\HotelProjectAPI\\HotelProjectAPI.csproj",
         "projectName": "HotelProjectAPI",
-        "projectPath": "C:\\Users\\alexa\\C#\\GroupProject\\HotelProjectAPI\\HotelProjectAPI.csproj",
+        "projectPath": "C:\\Users\\alexa\\VisualStudioCodeProject\\HotelProjectAPI\\HotelProjectAPI.csproj",
         "packagesPath": "C:\\Users\\alexa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alexa\\C#\\GroupProject\\HotelProjectAPI\\obj\\",
+        "outputPath": "C:\\Users\\alexa\\VisualStudioCodeProject\\HotelProjectAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -88,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.111/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

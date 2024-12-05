@@ -4,29 +4,43 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// **1. Lägg till CORS-policy**
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin() // Tillåt alla ursprung (du kan specificera domäner om det behövs)
+              .AllowAnyHeader() // Tillåt alla headers
+              .AllowAnyMethod(); // Tillåt GET, POST, PUT, DELETE osv.
+    });
+});
+
+// **2. Lägg till DbContext-tjänsten**
+builder.Services.AddDbContext<Context>(options =>
+    options.UseSqlServer("Server=localhost;Database=GroupProject;Trusted_Connection=True;Trust Server Certificate=Yes"));
+
+// **3. Lägg till controllers och Swagger**
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddControllers();
-
-// Registering the DbContext (Context) in the service container.
-builder.Services.AddDbContext<Context>(
-    options => options.UseSqlServer("Server=localhost;Database=GroupProject;Trusted_connection=True;Trust Server Certificate=Yes")
-);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// **4. Använd CORS-policy**
+app.UseCors("AllowAll");
 
-// Enable Swagger/OpenAPI only in the development environment.
+// **5. Konfigurera Swagger för utvecklingsläge**
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection(); // Redirect HTTP requests to HTTPS.
+// **6. Redirect HTTP till HTTPS**
+app.UseHttpsRedirection();
 
-app.MapControllers(); // Map the controllers to the URL routes.
+// **7. Lägg till controller-routing**
+app.MapControllers();
 
-app.Run(); // Start the application.
+// **8. Starta applikationen**
+app.Run();

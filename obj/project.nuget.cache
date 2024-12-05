@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mGuZBzqtjv2lbPXAz0+GWHrVu6gNzYUWqPjugzJlBdI9fVb6nM5FGicWPS6ABRGxiPIFjb/z3CNt8NRuNQv4Xw==",
+  "dgSpecHash": "qHoftilQ+GmftTbAJ7zjzW9oUAXh9frfj0A1nXqXXYI9ltjxQ7SJb2I703Vcv11pzEFsmhq6ELtjD/rh5jZvkw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alexa\\C#\\GroupProject\\HotelProjectAPI\\HotelProjectAPI.csproj",
+  "projectFilePath": "C:\\Users\\alexa\\VisualStudioCodeProject\\HotelProjectAPI\\HotelProjectAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alexa\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\alexa\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

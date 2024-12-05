@@ -22,36 +22,39 @@ public class CustomerController : ControllerBase
         return _context.Customers.ToList();
     }
 
-    // HTTP POST Method to create a new customer
-    [HttpPost]
-    public ActionResult<Customer> CreateCustomer(string name) 
+  [HttpPost]
+public ActionResult<string> CreateCustomer(string name, int? roomId = null)
+{
+    try
     {
-        try
+        var customer = new Customer(name);
+
+        // Optionally associate the customer with a room if roomId is provided
+        if (roomId.HasValue)
         {
-            // Find an available room without any customers
-            var availableRoom = _context.Rooms.FirstOrDefault(room => room.Customer.Count == 0);
-            if (availableRoom == null)
+            var room = _context.Rooms.FirstOrDefault(r => r.Id == roomId);
+            if (room == null)
             {
-                return BadRequest("No available rooms."); // No rooms available
+                return BadRequest("Room not found.");
             }
 
-            // Create a new customer and associate them with the available room
-            var customer = new Customer(name);
-            customer.Rooms.Add(availableRoom);
-            availableRoom.Customer.Add(customer);
-
-            // Update entities in the database
-            _context.Rooms.Update(availableRoom);
-            _context.Customers.Add(customer);
-            _context.SaveChanges();
-
-            return Ok("Customer created successfully"); // Return success message
+            customer.Rooms.Add(room);
+            room.Customer.Add(customer);
+            _context.Rooms.Update(room);
         }
-        catch (Exception ex)
-        {
-            return StatusCode(500, $"An error occurred: {ex.Message}"); // Handle exceptions
-        }
+
+        // Add the customer to the database
+        _context.Customers.Add(customer);
+        _context.SaveChanges();
+
+        return Ok("Customer created successfully");
     }
+    catch (Exception ex)
+    {
+        return StatusCode(500, $"An error occurred: {ex.Message}");
+    }
+}
+
 
     // HTTP PUT Method to update customer's name by ID
     [HttpPut("{customerId}")]
